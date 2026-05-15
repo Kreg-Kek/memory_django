@@ -4,6 +4,22 @@
     <meta charset="utf-8" />
     <title>Simple Django App</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <style>
+    .link-button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: none; 
+      display: inline;
+    }
+    .link-button:focus {
+      outline: none;
+    }
+    </style>
   </head>
   <body>
     <header>
@@ -13,7 +29,10 @@
         <a href="{% url 'app:create' %}">Create</a>
         {% if user.is_authenticated %}
         <span>Hi, {{ user.username }}</span>
-        <a href="{% url 'logout' %}">Logout</a>
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+          {% csrf_token %}
+          <button type="submit" class="link-button">Logout</button>
+        </form>
         {% else %}
         <a href="{% url 'login' %}">Login</a>
         {% endif %}
