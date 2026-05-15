@@ -1,0 +1,14 @@
+{% extends "app/base.html" %} {% block content %}
+<h2>Messages</h2>
+{% if messages %}
+<ul>
+  {% for m in messages %}
+  <li>
+    <strong>{{ m.name }}</strong> — {{ m.text|linebreaks }}
+    <small>by {{ m.author.username }} at {{ m.created }}</small>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No messages yet.</p>
+{% endif %} {% endblock %}

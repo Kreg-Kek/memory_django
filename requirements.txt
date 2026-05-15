@@ -1,0 +1,4 @@
+Django==6.0.5
+gunicorn
+psycopg2-binary
+python-dotenv
